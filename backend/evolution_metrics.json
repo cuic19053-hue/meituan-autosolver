@@ -1,0 +1,11 @@
+{
+  "total_runs": 2,
+  "total_evolutions": 2,
+  "utility_history": [
+    999768.0,
+    999768.0
+  ],
+  "best_utility": 999768.0,
+  "w_score_min": 0.5,
+  "w_score_max": 0.9
+}

@@ -1,0 +1,50 @@
+[
+  {
+    "state": {
+      "density": 1.4,
+      "avg_will": 0.55,
+      "avg_score": 50.79,
+      "courier_count": 5,
+      "task_count": 5,
+      "max_tasks_per_row": 2,
+      "total_lines": 7,
+      "score_range": 79.5,
+      "will_range": 0.9,
+      "cohesiveness_score": 0.5,
+      "task_courier_ratio": 1.0,
+      "avg_tasks_per_courier": 1.6,
+      "score_variance": 531.56,
+      "willingness_variance": 0.0864
+    },
+    "action": {
+      "strategy": "beam_search_adaptive",
+      "params": {}
+    },
+    "utility": 999768.0,
+    "timestamp": 1779894431.5489209
+  },
+  {
+    "state": {
+      "density": 1.4,
+      "avg_will": 0.55,
+      "avg_score": 50.79,
+      "courier_count": 5,
+      "task_count": 5,
+      "max_tasks_per_row": 2,
+      "total_lines": 7,
+      "score_range": 79.5,
+      "will_range": 0.9,
+      "cohesiveness_score": 0.5,
+      "task_courier_ratio": 1.0,
+      "avg_tasks_per_courier": 1.6,
+      "score_variance": 531.56,
+      "willingness_variance": 0.0864
+    },
+    "action": {
+      "strategy": "beam_search_adaptive",
+      "params": {}
+    },
+    "utility": 999768.0,
+    "timestamp": 1779894431.55734
+  }
+]

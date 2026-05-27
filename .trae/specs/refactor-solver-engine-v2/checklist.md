@@ -1,0 +1,22 @@
+# Checklist
+
+- [x] solver_engine.py: `parse_seed_file()` 保持编码回退逻辑不变，正确解析 175 条数据
+- [x] solver_engine.py: 每条记录包含 `utility` 字段 = score × 0.7 + willingness × 0.3
+- [x] solver_engine.py: 按 utility 降序排序
+- [x] solver_engine.py: 使用 `locked_tasks: Set` 和 `locked_couriers: Set` 进行 O(1) 冲突检测
+- [x] solver_engine.py: 合法分配日志格式为 `> [ALLOCATION] 拓扑节点 {tasks} 成功锚定至运力 {courier} (效用值: {utility})`
+- [x] solver_engine.py: 冲突丢弃日志格式为 `> [CONFLICT] 丢弃分配: 运力 {courier} 发生时空重叠，跳过。`
+- [x] solver_engine.py: 包含初始化日志 `> [SYS] 时空拓扑数据加载完成，共 {n} 条候选方案`
+- [x] solver_engine.py: 包含排序完成日志 `> [SYS] 效用矩阵构建完成，已按多目标权重降序排列`
+- [x] solver_engine.py: 包含汇总日志 `> [SYS] 推演完毕 | 锚定任务 {n} 项 | 激活运力 {m} 个 | 全局效用峰值 {score}`
+- [x] solver_engine.py: `kpi.efficiency_gain` 基于匹配率动态计算（格式：`+XX.X%`）
+- [x] solver_engine.py: `kpi.completion_rate` = matched_tasks / total_tasks × 100%（格式：`XX.X%`）
+- [x] solver_engine.py: `kpi.latency` 使用 `time.perf_counter()` 真实计时（格式：`X.XXs`）
+- [x] solver_engine.py: 响应包含 `status: "success"` 顶级字段
+- [x] solver_engine.py: `solutions[].tasks` 为数组格式 `["T0037", "T0039"]` 而非字符串
+- [x] solver_engine.py: 不包含合成 Padding 逻辑（移除 target=301 相关代码）
+- [x] main.py: 不再引用 `result['stats']`（该 key 不存在）
+- [x] main.py: `/api/execute_solve` 返回结构含 `status`、`kpi`、`logs`、`solutions` 四个字段
+- [x] SolutionTerminal.jsx: `solutions` 渲染兼容数组格式的 `tasks` 字段
+- [x] 算法执行耗时 < 0.5 秒（处理 175 条数据）
+- [x] 没有破坏现有的 `/api/run_optimization`、`/api/chat`、`/api/report` 端点

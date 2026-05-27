@@ -1,0 +1,6 @@
+{
+  "build_command": "docker build -t meituan-autosolver .",
+  "start_command": "uvicorn backend.main:app --host 0.0.0.0 --port 8080",
+  "install_command": "pip install -r backend/requirements.txt",
+  "port": 8080
+}

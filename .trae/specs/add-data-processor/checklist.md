@@ -1,0 +1,9 @@
+- [x] `data_processor.py` 能正确解析 tab 分隔的 `large_seed301.txt`，处理逗号分隔的 task_id_list
+- [x] 编码 fallback 机制正常工作（utf-8 → gbk → latin-1）
+- [x] 每个 TaskID 的坐标落在中心区域（坐标范围中心 ±30%）
+- [x] 每个 CourierID 的坐标落在边缘区域（坐标范围外圈 70%-100%）
+- [x] 同一 ID 多次出现返回相同坐标（确定性映射）
+- [x] `GET /api/raw_data` 返回正确的 JSON 结构（nodes 含 id/type/x/y，links 含 source/target/score/willingness）
+- [x] 控制台打印解析成功日志（文件路径、行数、唯一 ID 数量）
+- [x] 文件缺失时 API 返回错误信息
+- [x] 数据在服务启动时解析并缓存，不重复读取文件

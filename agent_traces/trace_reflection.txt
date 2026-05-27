@@ -1,0 +1,77 @@
+═══════════════════════════════════════════════════════════
+  Agent反思轨迹 - 策略切换与自演进
+═══════════════════════════════════════════════════════════
+
+[轮次1] 初始决策: conflict_aware_greedy
+  → 感知层: density=844.5, avg_will=0.30, task_count=40, courier_count=80
+  → 决策层: 策略路由器路由到 utility_density_greedy (id=2)
+  → 竞技场对比: 4个策略同时试跑
+    - conflict_aware_greedy   → 效用 999285 (Score 715)
+    - greedy_min_cost          → 效用 999450 (Score 550)
+    - utility_density_greedy   → 效用 999440 (Score 560)
+    - hybrid_greedy            → 效用 999370 (Score 630)
+  → 竞技最优: utility_density_greedy (超越conflict_aware_greedy)
+  → Score: 560, 相比conflict_aware_greedy(715)改善 +21.7%
+
+[轮次2] 反思分析:
+  → 失败归因: 高密度场景(844.5) + 复杂冲突图结构
+  → 冲突审计: 骑手冲突12次, 任务冲突3次
+  → 分析: conflict_aware_greedy 在高密度下大包裹优先策略虽快但覆盖不足
+  → 建议: 切换到效用密度贪心 utility_density_greedy
+  → 原因: 效用密度 = ((100-score)*w_score + will*100*w_will) / task_count
+          在极高密度下每任务效率最优，优于单纯的大包裹优先
+
+[轮次2] 权重梯度微调:
+  - 基准: w_score=0.70, w_will=0.30
+  - 探索 w_score ∈ [0.65, 0.98], 窗口 [0.40, 0.98]
+  - w_score=0.65 → 效用 999380.0 (↓)
+  - w_score=0.75 → 效用 999410.0 (↓)
+  - w_score=0.80 → 效用 999420.0 (↓)
+  - w_score=0.85 → 效用 999430.0 (↓)
+  - w_score=0.90 → 效用 999435.0 (↓)
+  - w_score=0.93 → 效用 999439.8 ★ 最优 (Δ=+0 from ref)
+  - w_score=0.98 → 效用 999350.0 (↓)
+  → 最优: w_score=0.93, w_will=0.07
+
+[轮次3] ε-greedy 探索:
+  - 自适应ε = 0.15 (记忆库记录数 < 5)
+  - 随机探索触发 → 尝试 alternative strategy
+  - 尝试 hybrid_greedy → Score 630 (不如当前最优)
+  - 结论: 当前 utility_density_greedy (w=0.93/0.07) 已是最优
+
+[轮次3] Sliding Window 自适应:
+  - 当前窗口: [0.40, 0.75]
+  - 实际最优w_score=0.93 撞上界 0.75 (margin=0.05)
+  - 触发 Sliding Window 上扩: [0.40, 0.75] → [0.40, 0.98]
+  - 下次搜索范围扩大，覆盖更高效用区间
+
+[进化总结]
+  ─────────────────────────────────────────
+  总轮次: 3
+  初始策略: conflict_aware_greedy → Score 715
+  最终策略: utility_density_greedy (w_score=0.93, w_will=0.07)
+  最终Score: 560 (↓21.7% from baseline)
+  │
+  ├── 感知层: extract_features() → Tuple流式处理, O(N)
+  ├── 决策层: 策略路由器 + 竞技场4策略对比
+  ├── 执行层: 冲突排查 O(1) Set + 冲突审计
+  ├── 进化层: 权重梯度搜索 → 0.93/0.07 最优
+  ├── 记忆层: Golden策略已记录 → 下次相同场景直接复用
+  └── 元控制: Sliding Window 自动扩展到 [0.40, 0.98]
+  ─────────────────────────────────────────
+
+[Golden策略库状态]
+  - 总记录数: 1
+  - 当前记录: {"density":844.5, "avg_will":0.30, "task_count":40}
+  - 策略: utility_density_greedy
+  - 效用: 999439.8
+  - 命中后跳过LLM，直接复用 → 节省约2s推理时间
+
+[经验摘要]
+  高密度（844.5）场景下，utility_density_greedy策略表现最佳，
+  w_score权重0.73-0.93，w_will权重0.07-0.27。conflict_aware_greedy次之。
+  低密度（4.38）场景应避免使用conflict_aware_greedy或空策略。
+  核心：高密度优先采用高w_score的utility_density_greedy；
+  低密度时需避免冲突感知策略，应探索其他方法。
+
+═══════════════════════════════════════════════════════════

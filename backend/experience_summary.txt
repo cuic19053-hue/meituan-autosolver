@@ -1,0 +1,1 @@
+高密度（844.5）场景下，utility_density_greedy策略表现最佳，w_score权重0.73-0.93，w_will权重0.07-0.27，效用接近999440。conflict_aware_greedy次之，效用约999285。低密度（4.38）场景应避免使用conflict_aware_greedy或空策略，效用仅370。核心：高密度优先采用高w_score的utility_density_greedy；低密度时需避免冲突感知策略，应探索其他方法。

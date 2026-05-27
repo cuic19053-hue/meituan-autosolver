@@ -1,0 +1,27 @@
+# Checklist
+
+- [x] App.jsx: 品牌名已替换为"AutoSolver"，版本号已替换为"云端智能运筹中枢"
+- [x] App.jsx: Hero 标题已替换为"云网协同推演 · 空间运力聚合引擎"
+- [x] App.jsx: 按钮"启蒙"已替换为"[ 启动云端全息推演 ]"
+- [x] App.jsx: 按钮"处理中..."已替换为"[ 全息推演中... ]"
+- [x] App.jsx: HUD 面板标题已替换为"时空拓扑遥测矩阵"
+- [x] App.jsx: 指标"智能体效用"已替换为"全局效用峰值"
+- [x] App.jsx: 指标"完成率"已替换为"云端在线运力"
+- [x] App.jsx: 指标"响应时间"已替换为"运算耗时"
+- [x] App.jsx: 终端标题已升级为多智能体决策终端风格
+- [x] App.jsx: 终端空状态已替换为"> [SYS] 正在接入云端调度引擎..."
+- [x] App.jsx: Summary 弹窗标题"执行摘要"已替换为"全局效用归因报告"
+- [x] SolutionTerminal.jsx: 流式输出行格式已替换为专业术语格式
+- [x] SolutionTerminal.jsx: hover 干预提示已替换为"[ 边缘异常接管 ]"
+- [x] SolutionTerminal.jsx: Summary 内 KPI 标签已替换为专业术语
+- [x] OrchestrationNav.jsx: 版本号已替换为"云端智能运筹中枢"
+- [x] MissionBrief.jsx: Hero 标题已替换为"云网协同推演 · 空间运力聚合引擎"
+- [x] MissionBrief.jsx: CTA 按钮已替换为"[ 启动云端全息推演 ]"
+- [x] LiveTelemetry.jsx: 面板标题已替换为"时空拓扑遥测矩阵"
+- [x] LiveTelemetry.jsx: 指标"待派发订单"已替换为"全域待分配锚点"
+- [x] LiveTelemetry.jsx: 指标"在线骑手运力"已替换为"云端在线运力"
+- [x] DataUploader.jsx: 提示文本已升级为专业语态
+- [x] 所有 onClick 逻辑未被修改
+- [x] 所有 useState 变量名未被修改
+- [x] 所有 Tailwind CSS 类名未被修改
+- [x] 应用可正常编译运行

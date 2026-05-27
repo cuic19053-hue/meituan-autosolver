@@ -1,0 +1,13 @@
+- [x] features.py 中 extract_features 返回 dict 包含 cohesiveness_score 字段
+- [x] agent.py 中 _build_system_prompt 方法存在且返回包含 Role/Philosophy/Arsenal/Protocol/OutputFormat 的文本
+- [x] agent.py 中 _build_prompt 输出包含 Remaining Time Budget 字段
+- [x] agent.py 中 _build_prompt 输出包含 LLM Circuit Breaker 状态字段
+- [x] agent.py 中 _build_prompt 输出包含 Graph Cohesiveness 字段
+- [x] agent.py 中 _call_deepseek payload.messages 为 [system, user] 双消息结构
+- [x] agent.py 中 __init__ 包含 _llm_circuit_breaker 和 _llm_timeout_count 属性
+- [x] agent.py 中 _call_deepseek 超时时递增 _llm_timeout_count
+- [x] agent.py 中 make_decision 检查熔断状态跳过 LLM
+- [x] agent.py 中 run_evolution_cycle 结束时重置熔断状态
+- [x] agent.py 中 _call_llm_summarizer 使用双消息结构
+- [x] execute_solve() 可正常运行无报错
+- [x] 日志流中包含 META_AGENT 或规则降级相关日志

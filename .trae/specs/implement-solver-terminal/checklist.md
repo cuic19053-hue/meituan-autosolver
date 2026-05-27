@@ -1,0 +1,17 @@
+- [x] `solver_engine.py` 能解析 large_seed301.txt
+- [x] 贪心算法按 composite_score (score*0.7 + willingness*0.3) 降序选取
+- [x] 每个 Task 仅出现在一个最终方案中
+- [x] 每个 Courier 仅出现在一个最终方案中
+- [x] 日志格式为 [HH:MM:SS.ss] 前缀（MATCH_SUCCESS / SKIP_CONFLICT / INIT_SOLVER）
+- [x] `execute_solve()` 返回包含 solutions/total_score/match_rate/avg_willingness/logs
+- [x] `/api/execute_solve` 返回 HTTP 200 和正确 JSON
+- [x] SolutionTerminal 背景为 bg-black/90
+- [x] SolutionTerminal 边框为 border-yellow-500/20
+- [x] SolutionTerminal 字体为 font-mono
+- [x] 逐行打字机效果，每行延迟 50ms
+- [x] 顶部状态栏显示 [TERMINAL_READY] 或 [SOLVING_COMPLETE]
+- [x] 右上角有 RESET 按钮
+- [x] App.jsx isExecuting=true 时显示 SolutionTerminal
+- [x] SolutionTerminal 调用 /api/execute_solve 获取数据
+- [x] RESET 按钮恢复卡片视图
+- [x] 浏览器无编译错误

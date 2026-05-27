@@ -1,0 +1,14 @@
+- [x] 背景链路 stroke-width=0.5, stroke-opacity=0.02, color=#737373
+- [x] 高亮链路 stroke=#FFD000, stroke-width=2, filter=drop-shadow
+- [x] Solver 执行后背景链路淡出动画（opacity 0.02→0, 800ms）
+- [x] Solver 执行后高亮链路生长动画（opacity 0→1, 600ms, delay=200ms）
+- [x] 节点按 ID 去重，每个 ID 仅渲染一次
+- [x] Task 节点为实心圆点（fill=#EDEDED, r=5）
+- [x] Courier 节点为空心方块（fill=none, stroke=#737373, 8×8）
+- [x] 悬停时显示 ID 标签
+- [x] viewBox 根据节点坐标范围动态计算（含 10% padding）
+- [x] SVG 尺寸 600×600 由 CSS 控制（容器宽高固定）
+- [x] 点击 Courier 节点时，该 Courier 所有链路以蓝色高亮（#60A5FA, opacity=0.3）
+- [x] 其余链路在聚焦时隐藏
+- [x] 再次点击恢复所有链路显示
+- [x] 浏览器无编译错误和运行时错误

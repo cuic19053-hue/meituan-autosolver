@@ -1,0 +1,9 @@
+{
+  "{\"avg_will\": 0.55, \"cohesiveness_score\": 0.5, \"courier_count\": 5, \"density\": 1.4, \"max_tasks_per_row\": 2, \"task_count\": 5}": {
+    "action": {
+      "strategy": "beam_search_adaptive",
+      "params": {}
+    },
+    "utility": 999768.0
+  }
+}

@@ -1,0 +1,34 @@
+# Checklist
+
+- [x] `backend/test_harness.py` 文件存在且可独立运行
+- [x] test_harness 覆盖全部8种场景类型
+- [x] test_harness 每场景重复5次，输出均值/标准差/成功率
+- [x] test_harness 空输入场景不崩溃，返回空列表
+- [x] `backend/benchmark.py` 文件存在且可独立运行
+- [x] benchmark 覆盖全部5种baseline
+- [x] benchmark 输出中AutoSolver Score ≤ 所有baseline Score
+- [x] local_search_2opt 支持跨骑手Exchange操作
+- [x] local_search_2opt 交换操作后Score有改善（非退化）
+- [x] route_strategy_v2 融合Golden策略检索
+- [x] route_strategy_v2 高置信度命中时不调用LLM
+- [x] route_strategy_v2 低置信度时回退到硬编码决策树
+- [x] 原 `route_strategy()` 函数签名和行为保持向后兼容
+- [x] AutonomousAgent 新增 `run_cycle_no_llm()` 方法
+- [x] run_cycle_no_llm 全程不调用任何LLM API
+- [x] run_cycle_no_llm 在8.5s内完成求解
+- [x] run_cycle_no_llm 输出的解通过validate_solution校验
+- [x] `solve()` 入口增加 `_validate_input()` 输入安全校验
+- [x] 空输入 → `[]` 不崩溃
+- [x] 非Tab分隔格式 → `[]` 不崩溃
+- [x] validate_solution 支持存在性校验（可选参数）
+- [x] validate_solution 向后兼容不传all_tasks/all_couriers的调用
+- [x] LLM熔断器支持30秒滑动窗口计数
+- [x] LLM熔断器触发后60秒自动恢复
+- [x] LLM响应长度 < 10字符或缺少"strategy"时视为无效
+- [x] make_decision 支持 deterministic_mode 参数
+- [x] deterministic_mode=True 产生确定性输出
+- [x] `backend/compliance_check.py` 文件存在且可运行
+- [x] compliance_check 验证5项提交要求
+- [x] 所有模块 import 不报错：`python -c "from backend.solver_engine import solve; print('OK')"`
+- [x] 端到端执行时间 < 10秒（含LLM模式）
+- [x] 端到端执行时间 < 10秒（零LLM模式）

@@ -1,0 +1,14 @@
+**/.env
+**/.env.local
+**/.env.production
+**/.env.development
+!.env.example
+!**/.env.example
+__pycache__/
+*.pyc
+node_modules/
+.venv/
+dist/
+!Dockerfile
+celestial-glass-voyage/
+.trae/
