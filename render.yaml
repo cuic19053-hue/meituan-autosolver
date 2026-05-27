@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: meituan-autosolver
+    runtime: docker
+    plan: free
+    envVars:
+      - key: USE_LLM
+        value: "false"
+      - key: PYTHONPATH
+        value: /app
+      - key: PYTHONUNBUFFERED
+        value: "1"
+      - key: PORT
+        value: "8080"
