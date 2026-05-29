@@ -9,34 +9,44 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Trigger Railway Redeploy
+      - name: Trigger Railway Redeploy via API
         env:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
-          SERVICE_ID: ${{ vars.RAILWAY_SERVICE_ID }}
-          ENVIRONMENT_ID: ${{ vars.RAILWAY_ENVIRONMENT_ID }}
+          PROJECT_ID: "77c2c79f-7877-4208-b4a1-c83d36dc7c9e"
+          SERVICE_ID: "380b2574-cba1-417a-8bd5-2a427da3c0f2"
+          ENVIRONMENT_ID: "de44af6a-d8c7-4f36-b7a4-32c5498cf0ac"
         run: |
-          DEPLOYMENTS=$(curl -s -X POST "https://backboard.railway.app/api/graphql/v2" \
+          echo "Testing Railway API access..."
+          PROJECT_RESP=$(curl -s -w "\n%{http_code}" -X POST "https://backboard.railway.app/api/graphql/v2" \
+            -H "Authorization: Bearer $RAILWAY_TOKEN" \
+            -H "Content-Type: application/json" \
+            -d '{"query":"{ project(id: \"'"$PROJECT_ID"'\") { name services { edges { node { id name } } } } }"}')
+          
+          HTTP_CODE=$(echo "$PROJECT_RESP" | tail -1)
+          BODY=$(echo "$PROJECT_RESP" | sed '$d')
+          echo "HTTP Status: $HTTP_CODE"
+          echo "Response: $BODY"
+          
+          if [ "$HTTP_CODE" != "200" ]; then
+            echo "API access failed. Trying with different auth header..."
+            PROJECT_RESP2=$(curl -s -w "\n%{http_code}" -X POST "https://backboard.railway.app/api/graphql/v2" \
+              -H "Authorization: Bearer $RAILWAY_TOKEN" \
+              -H "Content-Type: application/json" \
+              -H "User-Agent: RailwayCLI/4.65.0" \
+              -d '{"query":"{ project(id: \"'"$PROJECT_ID"'\") { name } }"}')
+            HTTP_CODE2=$(echo "$PROJECT_RESP2" | tail -1)
+            BODY2=$(echo "$PROJECT_RESP2" | sed '$d')
+            echo "HTTP Status (with UA): $HTTP_CODE2"
+            echo "Response (with UA): $BODY2"
+          fi
+          
+          echo "Trying deploymentRedeploy with latest deployment..."
+          DEPLOY_RESP=$(curl -s -w "\n%{http_code}" -X POST "https://backboard.railway.app/api/graphql/v2" \
             -H "Authorization: Bearer $RAILWAY_TOKEN" \
             -H "Content-Type: application/json" \
             -H "User-Agent: RailwayCLI/4.65.0" \
-            -d "{\"query\":\"{ deployments(serviceId: \\\"$SERVICE_ID\\\", environmentId: \\\"$ENVIRONMENT_ID\\\") { edges { node { id status } } } }\"}")
-          
-          echo "Deployments response: $DEPLOYMENTS"
-          
-          DEPLOYMENT_ID=$(echo "$DEPLOYMENTS" | jq -r '.data.deployments.edges[0].node.id')
-          
-          if [ -z "$DEPLOYMENT_ID" ] || [ "$DEPLOYMENT_ID" = "null" ]; then
-            echo "No deployment found, trying serviceDeploy mutation..."
-            curl -s -X POST "https://backboard.railway.app/api/graphql/v2" \
-              -H "Authorization: Bearer $RAILWAY_TOKEN" \
-              -H "Content-Type: application/json" \
-              -H "User-Agent: RailwayCLI/4.65.0" \
-              -d "{\"query\":\"mutation { serviceDeploy(serviceId: \\\"$SERVICE_ID\\\", environmentId: \\\"$ENVIRONMENT_ID\\\") { id status } }\"}"
-          else
-            echo "Found deployment: $DEPLOYMENT_ID, triggering redeploy..."
-            curl -s -X POST "https://backboard.railway.app/api/graphql/v2" \
-              -H "Authorization: Bearer $RAILWAY_TOKEN" \
-              -H "Content-Type: application/json" \
-              -H "User-Agent: RailwayCLI/4.65.0" \
-              -d "{\"query\":\"mutation { deploymentRedeploy(deploymentId: \\\"$DEPLOYMENT_ID\\\") { id status } }\"}"
-          fi
+            -d '{"query":"{ project(id: \"'"$PROJECT_ID"'\") { deployments { edges { node { id status } } } } }"}')
+          HTTP_CODE3=$(echo "$DEPLOY_RESP" | tail -1)
+          BODY3=$(echo "$DEPLOY_RESP" | sed '$d')
+          echo "Deployments HTTP Status: $HTTP_CODE3"
+          echo "Deployments Response: $BODY3"
