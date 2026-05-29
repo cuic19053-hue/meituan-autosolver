@@ -9,7 +9,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Deploy to Railway via API
+      - name: Connect and Deploy to Railway
         env:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
           PROJECT_ID: "77c2c79f-7877-4208-b4a1-c83d36dc7c9e"
@@ -17,15 +17,15 @@ jobs:
           ENVIRONMENT_ID: "de44af6a-d8c7-4f36-b7a4-32c5498cf0ac"
         run: |
           echo "Connecting service to GitHub repo..."
-          UPDATE_RESP=$(curl -s -X POST "https://backboard.railway.com/graphql/v2" \
+          CONNECT_RESP=$(curl -s -X POST "https://backboard.railway.com/graphql/v2" \
             -H "Authorization: Bearer $RAILWAY_TOKEN" \
             -H "Content-Type: application/json" \
-            -d "{\"query\":\"mutation { serviceUpdate(id: \\\"$SERVICE_ID\\\", input: { source: { type: GITHUB, github: { repo: \\\"cuic19053-hue/meituan-autosolver\\\", branch: \\\"master\\\" } } }) }\"}")
-          echo "Update response: $UPDATE_RESP"
+            -d "{\"query\":\"mutation { serviceConnect(id: \\\"$SERVICE_ID\\\", input: { repo: \\\"cuic19053-hue/meituan-autosolver\\\", branch: \\\"master\\\" }) { id name } }\"}")
+          echo "Connect response: $CONNECT_RESP"
           
-          echo "Triggering deploy from GitHub..."
-          TRIGGER_RESP=$(curl -s -X POST "https://backboard.railway.com/graphql/v2" \
+          echo "Triggering deploy..."
+          DEPLOY_RESP=$(curl -s -X POST "https://backboard.railway.com/graphql/v2" \
             -H "Authorization: Bearer $RAILWAY_TOKEN" \
             -H "Content-Type: application/json" \
-            -d "{\"query\":\"mutation { environmentTriggersDeploy(input: {projectId: \\\"$PROJECT_ID\\\", environmentId: \\\"$ENVIRONMENT_ID\\\", serviceId: \\\"$SERVICE_ID\\\"}) }\"}")
-          echo "Trigger response: $TRIGGER_RESP"
+            -d "{\"query\":\"mutation { serviceInstanceDeployV2(input: {projectId: \\\"$PROJECT_ID\\\", environmentId: \\\"$ENVIRONMENT_ID\\\", serviceId: \\\"$SERVICE_ID\\\"}) }\"}")
+          echo "Deploy response: $DEPLOY_RESP"
