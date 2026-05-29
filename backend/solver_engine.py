@@ -159,6 +159,13 @@ def execute_solve(input_text_override: str | None = None, use_llm: bool | None =
     # P1修复: 输出前格式校验（使用v2三重校验）
     solutions = validate_solution_v2(solutions, candidates=None, all_tasks=None)
 
+    # Fallback: 若 agent 返回空解，直接使用贪心策略保底
+    if not solutions:
+        candidates = _parse_to_candidates(input_text)
+        solutions = conflict_aware_greedy(candidates)
+        agent_logs.append("> [FALLBACK] Agent 未产出有效解，启用冲突感知贪心保底策略")
+
+
     matched_tasks = set()
     matched_couriers = set()
     for task_str, courier_list in solutions:

@@ -46,5 +46,371 @@
     },
     "utility": 999768.0,
     "timestamp": 1779894431.55734
+  },
+  {
+    "state": {
+      "density": 844.5,
+      "avg_will": 0.3,
+      "avg_score": 56.39,
+      "courier_count": 80,
+      "task_count": 40,
+      "max_tasks_per_row": 2,
+      "total_lines": 33780,
+      "score_range": 90.0,
+      "will_range": 0.94,
+      "cohesiveness_score": 1.0,
+      "task_courier_ratio": 2.0,
+      "avg_tasks_per_courier": 40.0,
+      "score_variance": 368.28,
+      "willingness_variance": 0.0465
+    },
+    "action": {
+      "strategy": "simulated_annealing",
+      "params": {}
+    },
+    "utility": 999285.4999136,
+    "timestamp": 1780065481.4669755
+  },
+  {
+    "state": {
+      "density": 844.5,
+      "avg_will": 0.3,
+      "avg_score": 56.39,
+      "courier_count": 80,
+      "task_count": 40,
+      "max_tasks_per_row": 2,
+      "total_lines": 33780,
+      "score_range": 90.0,
+      "will_range": 0.94,
+      "cohesiveness_score": 1.0,
+      "task_courier_ratio": 2.0,
+      "avg_tasks_per_courier": 40.0,
+      "score_variance": 368.28,
+      "willingness_variance": 0.0465
+    },
+    "action": {
+      "strategy": "simulated_annealing",
+      "params": {}
+    },
+    "utility": 999285.4999136,
+    "timestamp": 1780065482.356571
+  },
+  {
+    "state": {
+      "density": 844.5,
+      "avg_will": 0.3,
+      "avg_score": 56.39,
+      "courier_count": 80,
+      "task_count": 40,
+      "max_tasks_per_row": 2,
+      "total_lines": 33780,
+      "score_range": 90.0,
+      "will_range": 0.94,
+      "cohesiveness_score": 1.0,
+      "task_courier_ratio": 2.0,
+      "avg_tasks_per_courier": 40.0,
+      "score_variance": 368.28,
+      "willingness_variance": 0.0465
+    },
+    "action": {
+      "strategy": "simulated_annealing",
+      "params": {}
+    },
+    "utility": 999285.4999136,
+    "timestamp": 1780065790.6159008
+  },
+  {
+    "state": {
+      "density": 844.5,
+      "avg_will": 0.3,
+      "avg_score": 56.39,
+      "courier_count": 80,
+      "task_count": 40,
+      "max_tasks_per_row": 2,
+      "total_lines": 33780,
+      "score_range": 90.0,
+      "will_range": 0.94,
+      "cohesiveness_score": 1.0,
+      "task_courier_ratio": 2.0,
+      "avg_tasks_per_courier": 40.0,
+      "score_variance": 368.28,
+      "willingness_variance": 0.0465
+    },
+    "action": {
+      "strategy": "simulated_annealing",
+      "params": {}
+    },
+    "utility": 999285.4999136,
+    "timestamp": 1780065792.06936
+  },
+  {
+    "state": {
+      "density": 844.5,
+      "avg_will": 0.3,
+      "avg_score": 56.39,
+      "courier_count": 80,
+      "task_count": 40,
+      "max_tasks_per_row": 2,
+      "total_lines": 33780,
+      "score_range": 90.0,
+      "will_range": 0.94,
+      "cohesiveness_score": 1.0,
+      "task_courier_ratio": 2.0,
+      "avg_tasks_per_courier": 40.0,
+      "score_variance": 368.28,
+      "willingness_variance": 0.0465
+    },
+    "action": {
+      "strategy": "simulated_annealing",
+      "params": {}
+    },
+    "utility": 999285.4999136,
+    "timestamp": 1780066339.5675519
+  },
+  {
+    "state": {
+      "density": 844.5,
+      "avg_will": 0.3,
+      "avg_score": 56.39,
+      "courier_count": 80,
+      "task_count": 40,
+      "max_tasks_per_row": 2,
+      "total_lines": 33780,
+      "score_range": 90.0,
+      "will_range": 0.94,
+      "cohesiveness_score": 1.0,
+      "task_courier_ratio": 2.0,
+      "avg_tasks_per_courier": 40.0,
+      "score_variance": 368.28,
+      "willingness_variance": 0.0465
+    },
+    "action": {
+      "strategy": "simulated_annealing",
+      "params": {}
+    },
+    "utility": 999285.4999136,
+    "timestamp": 1780066341.5737405
+  },
+  {
+    "state": {
+      "density": 844.5,
+      "avg_will": 0.3,
+      "avg_score": 56.39,
+      "courier_count": 80,
+      "task_count": 40,
+      "max_tasks_per_row": 2,
+      "total_lines": 33780,
+      "score_range": 90.0,
+      "will_range": 0.94,
+      "cohesiveness_score": 1.0,
+      "task_courier_ratio": 2.0,
+      "avg_tasks_per_courier": 40.0,
+      "score_variance": 368.28,
+      "willingness_variance": 0.0465
+    },
+    "action": {
+      "strategy": "simulated_annealing",
+      "params": {}
+    },
+    "utility": 999285.4999136,
+    "timestamp": 1780066568.784371
+  },
+  {
+    "state": {
+      "density": 844.5,
+      "avg_will": 0.3,
+      "avg_score": 56.39,
+      "courier_count": 80,
+      "task_count": 40,
+      "max_tasks_per_row": 2,
+      "total_lines": 33780,
+      "score_range": 90.0,
+      "will_range": 0.94,
+      "cohesiveness_score": 1.0,
+      "task_courier_ratio": 2.0,
+      "avg_tasks_per_courier": 40.0,
+      "score_variance": 368.28,
+      "willingness_variance": 0.0465
+    },
+    "action": {
+      "strategy": "simulated_annealing",
+      "params": {}
+    },
+    "utility": 999285.4999136,
+    "timestamp": 1780066569.918703
+  },
+  {
+    "state": {
+      "density": 844.5,
+      "avg_will": 0.3,
+      "avg_score": 56.39,
+      "courier_count": 80,
+      "task_count": 40,
+      "max_tasks_per_row": 2,
+      "total_lines": 33780,
+      "score_range": 90.0,
+      "will_range": 0.94,
+      "cohesiveness_score": 1.0,
+      "task_courier_ratio": 2.0,
+      "avg_tasks_per_courier": 40.0,
+      "score_variance": 368.28,
+      "willingness_variance": 0.0465
+    },
+    "action": {
+      "strategy": "simulated_annealing",
+      "params": {}
+    },
+    "utility": 999285.4999136,
+    "timestamp": 1780067139.3580618
+  },
+  {
+    "state": {
+      "density": 844.5,
+      "avg_will": 0.3,
+      "avg_score": 56.39,
+      "courier_count": 80,
+      "task_count": 40,
+      "max_tasks_per_row": 2,
+      "total_lines": 33780,
+      "score_range": 90.0,
+      "will_range": 0.94,
+      "cohesiveness_score": 1.0,
+      "task_courier_ratio": 2.0,
+      "avg_tasks_per_courier": 40.0,
+      "score_variance": 368.28,
+      "willingness_variance": 0.0465
+    },
+    "action": {
+      "strategy": "simulated_annealing",
+      "params": {}
+    },
+    "utility": 999285.4999136,
+    "timestamp": 1780067140.701988
+  },
+  {
+    "state": {
+      "density": 844.5,
+      "avg_will": 0.3,
+      "avg_score": 56.39,
+      "courier_count": 80,
+      "task_count": 40,
+      "max_tasks_per_row": 2,
+      "total_lines": 33780,
+      "score_range": 90.0,
+      "will_range": 0.94,
+      "cohesiveness_score": 1.0,
+      "task_courier_ratio": 2.0,
+      "avg_tasks_per_courier": 40.0,
+      "score_variance": 368.28,
+      "willingness_variance": 0.0465
+    },
+    "action": {
+      "strategy": "simulated_annealing",
+      "params": {}
+    },
+    "utility": 999285.4999136,
+    "timestamp": 1780067153.6308305
+  },
+  {
+    "state": {
+      "density": 844.5,
+      "avg_will": 0.3,
+      "avg_score": 56.39,
+      "courier_count": 80,
+      "task_count": 40,
+      "max_tasks_per_row": 2,
+      "total_lines": 33780,
+      "score_range": 90.0,
+      "will_range": 0.94,
+      "cohesiveness_score": 1.0,
+      "task_courier_ratio": 2.0,
+      "avg_tasks_per_courier": 40.0,
+      "score_variance": 368.28,
+      "willingness_variance": 0.0465
+    },
+    "action": {
+      "strategy": "simulated_annealing",
+      "params": {}
+    },
+    "utility": 999285.4999136,
+    "timestamp": 1780067196.6932147
+  },
+  {
+    "state": {
+      "density": 844.5,
+      "avg_will": 0.3,
+      "avg_score": 56.39,
+      "courier_count": 80,
+      "task_count": 40,
+      "max_tasks_per_row": 2,
+      "total_lines": 33780,
+      "score_range": 90.0,
+      "will_range": 0.94,
+      "cohesiveness_score": 1.0,
+      "task_courier_ratio": 2.0,
+      "avg_tasks_per_courier": 40.0,
+      "score_variance": 368.28,
+      "willingness_variance": 0.0465
+    },
+    "action": {
+      "strategy": "simulated_annealing",
+      "params": {}
+    },
+    "utility": 999285.4999136,
+    "timestamp": 1780067198.3427744
+  },
+  {
+    "state": {
+      "density": 844.5,
+      "avg_will": 0.3,
+      "avg_score": 56.39,
+      "courier_count": 80,
+      "task_count": 40,
+      "max_tasks_per_row": 2,
+      "total_lines": 33780,
+      "score_range": 90.0,
+      "will_range": 0.94,
+      "cohesiveness_score": 1.0,
+      "task_courier_ratio": 2.0,
+      "avg_tasks_per_courier": 40.0,
+      "score_variance": 368.28,
+      "willingness_variance": 0.0465
+    },
+    "action": {
+      "strategy": "utility_density_greedy",
+      "params": {
+        "w_score": 0.86,
+        "w_will": 0.14
+      }
+    },
+    "utility": 999437.7917585,
+    "timestamp": 1780067294.0626974
+  },
+  {
+    "state": {
+      "density": 844.5,
+      "avg_will": 0.3,
+      "avg_score": 56.39,
+      "courier_count": 80,
+      "task_count": 40,
+      "max_tasks_per_row": 2,
+      "total_lines": 33780,
+      "score_range": 90.0,
+      "will_range": 0.94,
+      "cohesiveness_score": 1.0,
+      "task_courier_ratio": 2.0,
+      "avg_tasks_per_courier": 40.0,
+      "score_variance": 368.28,
+      "willingness_variance": 0.0465
+    },
+    "action": {
+      "strategy": "utility_density_greedy",
+      "params": {
+        "w_score": 0.91,
+        "w_will": 0.09
+      }
+    },
+    "utility": 999439.595398,
+    "timestamp": 1780067294.9971895
   }
 ]

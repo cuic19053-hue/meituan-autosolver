@@ -55,28 +55,31 @@ export default function App() {
       <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" />
 
       <div className="relative z-10 flex min-h-screen flex-col">
+        {/* 顶部导航栏 */}
         <div className="px-6 md:px-12 lg:px-16 pt-6">
           <OrchestrationNav isError={isError} />
         </div>
 
-        <div className="flex-1 flex flex-col justify-end px-6 md:px-12 lg:px-16 pb-12 lg:pb-16">
-          <div className="lg:grid lg:grid-cols-2 lg:items-end gap-8">
-            <MissionBrief onInitiate={handleInitiate} executing={isExecuting} datasetLoaded={datasetLoaded} onDatasetLoaded={handleDatasetLoaded} />
+        {/* 主内容区 */}
+        <div className="flex-1 flex flex-col justify-between px-6 md:px-12 lg:px-16 py-8">
+          {/* 左上角：数据指标面板 */}
+          <div className="flex justify-start">
+            <LiveTelemetry kpi={kpi} />
+          </div>
 
-            <div
-              className="mt-10 lg:mt-0 flex items-end justify-start lg:justify-end"
-              style={{
-                opacity: 1,
-                transition: 'opacity 1000ms',
-                transitionDelay: '1400ms',
-              }}
-            >
-              <LiveTelemetry kpi={kpi} />
-            </div>
+          {/* 底部：MissionBrief */}
+          <div>
+            <MissionBrief
+              onInitiate={handleInitiate}
+              executing={isExecuting}
+              datasetLoaded={datasetLoaded}
+              onDatasetLoaded={handleDatasetLoaded}
+            />
           </div>
         </div>
       </div>
 
+      {/* 右侧固定：SolutionTerminal */}
       <div
         className="fixed right-2 top-20 z-20 rounded-xl bg-black/80 border border-white/10 backdrop-blur-md transition-all duration-500 w-[340px]"
         style={{ height: "calc(100vh - 200px)" }}

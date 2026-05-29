@@ -5,5 +5,15 @@
       "params": {}
     },
     "utility": 999768.0
+  },
+  "{\"avg_will\": 0.3, \"cohesiveness_score\": 1.0, \"courier_count\": 80, \"density\": 844.5, \"max_tasks_per_row\": 2, \"task_count\": 40}": {
+    "action": {
+      "strategy": "utility_density_greedy",
+      "params": {
+        "w_score": 0.91,
+        "w_will": 0.09
+      }
+    },
+    "utility": 999439.595398
   }
 }
