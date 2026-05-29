@@ -27,5 +27,5 @@ jobs:
           DEPLOY_RESP=$(curl -s -X POST "https://backboard.railway.com/graphql/v2" \
             -H "Authorization: Bearer $RAILWAY_TOKEN" \
             -H "Content-Type: application/json" \
-            -d "{\"query\":\"mutation { serviceInstanceDeployV2(input: {projectId: \\\"$PROJECT_ID\\\", environmentId: \\\"$ENVIRONMENT_ID\\\", serviceId: \\\"$SERVICE_ID\\\"}) }\"}")
+            -d "{\"query\":\"mutation { serviceInstanceDeployV2(environmentId: \\\"$ENVIRONMENT_ID\\\", serviceId: \\\"$SERVICE_ID\\\") }\"}")
           echo "Deploy response: $DEPLOY_RESP"
