@@ -9,12 +9,34 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-
-      - name: Install Railway CLI
-        run: npm install -g @railway/cli
-
-      - name: Deploy to Railway
+      - name: Trigger Railway Redeploy
         env:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
-        run: railway up --service ${{ vars.RAILWAY_SERVICE_ID }} --environment ${{ vars.RAILWAY_ENVIRONMENT_ID }} --detach
+          SERVICE_ID: ${{ vars.RAILWAY_SERVICE_ID }}
+          ENVIRONMENT_ID: ${{ vars.RAILWAY_ENVIRONMENT_ID }}
+        run: |
+          DEPLOYMENTS=$(curl -s -X POST "https://backboard.railway.app/api/graphql/v2" \
+            -H "Authorization: Bearer $RAILWAY_TOKEN" \
+            -H "Content-Type: application/json" \
+            -H "User-Agent: RailwayCLI/4.65.0" \
+            -d "{\"query\":\"{ deployments(serviceId: \\\"$SERVICE_ID\\\", environmentId: \\\"$ENVIRONMENT_ID\\\") { edges { node { id status } } } }\"}")
+          
+          echo "Deployments response: $DEPLOYMENTS"
+          
+          DEPLOYMENT_ID=$(echo "$DEPLOYMENTS" | jq -r '.data.deployments.edges[0].node.id')
+          
+          if [ -z "$DEPLOYMENT_ID" ] || [ "$DEPLOYMENT_ID" = "null" ]; then
+            echo "No deployment found, trying serviceDeploy mutation..."
+            curl -s -X POST "https://backboard.railway.app/api/graphql/v2" \
+              -H "Authorization: Bearer $RAILWAY_TOKEN" \
+              -H "Content-Type: application/json" \
+              -H "User-Agent: RailwayCLI/4.65.0" \
+              -d "{\"query\":\"mutation { serviceDeploy(serviceId: \\\"$SERVICE_ID\\\", environmentId: \\\"$ENVIRONMENT_ID\\\") { id status } }\"}"
+          else
+            echo "Found deployment: $DEPLOYMENT_ID, triggering redeploy..."
+            curl -s -X POST "https://backboard.railway.app/api/graphql/v2" \
+              -H "Authorization: Bearer $RAILWAY_TOKEN" \
+              -H "Content-Type: application/json" \
+              -H "User-Agent: RailwayCLI/4.65.0" \
+              -d "{\"query\":\"mutation { deploymentRedeploy(deploymentId: \\\"$DEPLOYMENT_ID\\\") { id status } }\"}"
+          fi
